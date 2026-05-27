@@ -28,7 +28,7 @@ const rightGroups = [
     items: [
       { text: 'Follow the Zyber LinkedIn page' },
       { text: 'Update your headline: Building @Zyber — set as your current title' },
-      { text: 'Add experience: Title → Builder | Company → Zyber | Start date → May 2025' },
+      { text: 'Add experience: Title → Builder | Company → Zyber | Start date → May 2026' },
       { text: 'Turn on post notifications: Zyber LinkedIn page → bell icon → All posts' },
       { text: 'Connect with Falit Sijariya on LinkedIn' },
     ],
