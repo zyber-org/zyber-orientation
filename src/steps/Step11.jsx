@@ -79,23 +79,32 @@ function PosterContent({ name }) {
         textAlign: 'center',
       }}>
         <div style={{
-          fontSize: 56,
-          fontWeight: 700,
-          color: '#FFFFFF',
-          letterSpacing: '-0.02em',
-          lineHeight: 1.1,
-          marginBottom: 12,
+          fontSize: 32,
+          fontWeight: 500,
+          color: 'rgba(255,255,255,0.6)',
+          lineHeight: 1.2,
+          marginBottom: 8,
         }}>
           I am {name}
         </div>
         <div style={{
-          fontSize: 36,
+          fontSize: 38,
           fontWeight: 400,
-          color: 'rgba(255,255,255,0.7)',
+          color: 'rgba(255,255,255,0.75)',
           lineHeight: 1.2,
+          marginBottom: 8,
+        }}>
+          and I am building
+        </div>
+        <div style={{
+          fontSize: 110,
+          fontWeight: 900,
+          color: '#FFFFFF',
+          letterSpacing: '-0.03em',
+          lineHeight: 1.0,
           marginBottom: 36,
         }}>
-          and I am building Zyber
+          ZYBER
         </div>
 
         <div style={{
@@ -132,20 +141,20 @@ function PosterContent({ name }) {
           margin: '0 auto 32px',
         }} />
 
-        <div style={{ display: 'inline-block', textAlign: 'left' }}>
+        <div>
           <div style={{
             fontSize: 15,
             color: 'rgba(255,255,255,0.4)',
             marginBottom: 6,
           }}>
-            To join us, write to
+            To join us as a Builder
           </div>
           <div style={{
-            fontSize: 17,
-            fontWeight: 600,
+            fontSize: 20,
+            fontWeight: 700,
             color: '#5BB8D4',
           }}>
-            builders@zybernow.com
+            www.zybernow.com/builder
           </div>
         </div>
       </div>
