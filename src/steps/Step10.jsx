@@ -1,13 +1,7 @@
 import { useRef } from 'react'
 import html2canvas from 'html2canvas'
 
-const LINKEDIN_URL =
-  'https://www.linkedin.com/sharing/share-offsite/?url=https://zybernow.com&summary=' +
-  encodeURIComponent(
-    'Just joined Zyber as a Builder. Real work on a live product alongside some sharp people. Excited for what is ahead. zybernow.com #ZyberBuilder'
-  )
-
-export default function Step10({ user }) {
+export default function Step10({ user, onNext }) {
   const posterRef = useRef(null)
 
   const name = user.name || 'Builder'
@@ -35,6 +29,7 @@ export default function Step10({ user }) {
     } catch (err) {
       console.error('Poster export failed:', err)
     }
+    onNext()
   }
 
   return (
@@ -98,10 +93,11 @@ export default function Step10({ user }) {
           📸 Download your poster
         </button>
         <a
-          href={LINKEDIN_URL}
+          href="https://www.linkedin.com/sharing/share-offsite/?url=https://zybernow.com"
           target="_blank"
           rel="noopener noreferrer"
           className="btn-primary"
+          onClick={onNext}
           style={{
             display: 'block',
             textAlign: 'center',
@@ -185,7 +181,7 @@ export default function Step10({ user }) {
           </div>
         </div>
 
-        {/* Hero text — centered vertically ~40% from top */}
+        {/* Hero text */}
         <div style={{
           position: 'absolute',
           top: '38%',
@@ -222,7 +218,6 @@ export default function Step10({ user }) {
             {collegeAndCourse}
           </div>
 
-          {/* Horizontal rule */}
           <div style={{
             width: '60%',
             height: 1,
@@ -230,7 +225,6 @@ export default function Step10({ user }) {
             margin: '0 auto 32px',
           }} />
 
-          {/* Three words */}
           <div style={{
             fontSize: 18,
             color: 'rgba(255,255,255,0.5)',

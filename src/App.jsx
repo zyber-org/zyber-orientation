@@ -11,15 +11,17 @@ import Step7 from './steps/Step7'
 import Step8 from './steps/Step8'
 import Step9 from './steps/Step9'
 import Step10 from './steps/Step10'
+import Step11 from './steps/Step11'
 
 const TOTAL_STEPS = 10
+const MAX_STEP = 11
 
 export default function App() {
   const [currentStep, setCurrentStep] = useState(0)
   const [user, setUser] = useState({ name: '', college: '', course: '' })
   const [checked, setChecked] = useState(Array(13).fill(false))
 
-  const next = () => setCurrentStep(s => Math.min(s + 1, TOTAL_STEPS))
+  const next = () => setCurrentStep(s => Math.min(s + 1, MAX_STEP))
   const back = () => setCurrentStep(s => Math.max(s - 1, 0))
 
   const toggleCheck = (i) => {
@@ -44,7 +46,8 @@ export default function App() {
     <Step7 key={7} onNext={next} />,
     <Step8 key={8} onNext={next} />,
     <Step9 key={9} checked={checked} toggleCheck={toggleCheck} onNext={next} />,
-    <Step10 key={10} user={user} />,
+    <Step10 key={10} user={user} onNext={next} />,
+    <Step11 key={11} user={user} />,
   ]
 
   return (

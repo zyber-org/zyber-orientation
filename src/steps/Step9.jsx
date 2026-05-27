@@ -1,5 +1,5 @@
-const OPTIONAL_INDEX = 3
-const COMPULSORY_TOTAL = 12
+const OPTIONAL_INDICES = [3, 10, 11, 12]
+const COMPULSORY_TOTAL = 9
 
 const leftGroups = [
   {
@@ -35,6 +35,7 @@ const rightGroups = [
   },
   {
     label: '🐦 Twitter / X',
+    optionalNote: 'Optional if you are not on X',
     items: [
       { text: 'Follow @zybernow on X' },
       { text: 'Add to your bio: Building @zybernow' },
@@ -50,7 +51,20 @@ function ChecklistGroup({ group, startIndex, checked, toggleCheck }) {
   let idx = startIndex
   return (
     <div>
-      <div className="checklist-group-label">{group.label}</div>
+      <div className="checklist-group-label" style={{ display: 'flex', alignItems: 'baseline', gap: 8, flexWrap: 'wrap' }}>
+        {group.label}
+        {group.optionalNote && (
+          <span style={{
+            fontSize: 11,
+            color: 'var(--text-secondary)',
+            fontWeight: 400,
+            letterSpacing: '0.04em',
+            opacity: 0.65,
+          }}>
+            · {group.optionalNote}
+          </span>
+        )}
+      </div>
       {group.items.map(item => {
         const currentIdx = idx++
         return (
@@ -93,7 +107,7 @@ function ChecklistGroup({ group, startIndex, checked, toggleCheck }) {
 }
 
 export default function Step9({ checked, toggleCheck, onNext }) {
-  const compulsoryDone = checked.filter((v, i) => v && i !== OPTIONAL_INDEX).length
+  const compulsoryDone = checked.filter((v, i) => v && !OPTIONAL_INDICES.includes(i)).length
   const allCompulsoryDone = compulsoryDone === COMPULSORY_TOTAL
 
   // Calculate start indices for each group
@@ -108,7 +122,7 @@ export default function Step9({ checked, toggleCheck, onNext }) {
     <div className="page">
       <p className="section-label">09 · YOUR FIRST ACTIONS</p>
       <h1>Do these before your first orientation.</h1>
-      <p style={{ marginBottom: 16 }}>All 12 must be checked to complete. This is your first deliverable.</p>
+      <p style={{ marginBottom: 16 }}>All 9 must be checked to complete. This is your first deliverable.</p>
       <div className="live-counter" style={{ marginBottom: 24 }}>
         <span>{compulsoryDone}</span> of {COMPULSORY_TOTAL} complete
       </div>
