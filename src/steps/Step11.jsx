@@ -3,13 +3,15 @@ import html2canvas from 'html2canvas'
 
 const LINKEDIN_URL = 'https://www.linkedin.com/sharing/share-offsite/?url=https://zybernow.com'
 
-const CAPTION = `I just joined Zyber as a Builder. It is a real-time networking app that connects you with people who share your interests, your background and your drive, right when you are both free. No doomscrolling. No waiting. Just the right person at the right time.
+const CAPTION = `I just joined Zyber as a Builder.
 
-What makes this different is how it is built. Zyber runs on a student builder model. Students across some of the best campuses in India are not just using the product, they are building it. Research, GTM, communications, tech. Real work, real ownership, real impact.
+Zyber is a real-time networking app that connects you with people who share your interests, your background and your drive, right when you are both free. No doomscrolling. No waiting for texts. Just the right person at the right time.
 
-I am part of that team now. And if you are a student who wants to work on something live, build real skills and be part of a founding cohort that will actually matter later, this is worth looking at.
+It is built by students, for the world. And right now we are building it together across some of the best campuses in India.
 
-To join as a Builder, write to builders@zybernow.com
+Excited to be part of this from the ground up.
+
+If you want to join us as a Builder, write to builders@zybernow.com
 
 zybernow.com
 
@@ -123,7 +125,6 @@ function PosterContent({ name }) {
           Built by students, for the world.
         </div>
 
-        {/* Horizontal rule */}
         <div style={{
           width: '60%',
           height: 1,
@@ -131,7 +132,6 @@ function PosterContent({ name }) {
           margin: '0 auto 32px',
         }} />
 
-        {/* Recruit line */}
         <div style={{ display: 'inline-block', textAlign: 'left' }}>
           <div style={{
             fontSize: 15,
@@ -182,6 +182,7 @@ export default function Step11({ user }) {
   const previewContainerRef = useRef(null)
   const [previewScale, setPreviewScale] = useState(0.37)
   const [copied, setCopied] = useState(false)
+  const [downloading, setDownloading] = useState(false)
 
   const name = user.name || 'Builder'
   const safeName = name.replace(/\s+/g, '-').toLowerCase()
@@ -197,8 +198,10 @@ export default function Step11({ user }) {
   }, [])
 
   const handleDownload = async () => {
+    if (downloading) return
+    setDownloading(true)
     const el = posterRef.current
-    if (!el) return
+    if (!el) { setDownloading(false); return }
     try {
       const canvas = await html2canvas(el, {
         width: 1080,
@@ -215,6 +218,7 @@ export default function Step11({ user }) {
     } catch (err) {
       console.error('Poster export failed:', err)
     }
+    setDownloading(false)
   }
 
   const handleCopy = async () => {
@@ -229,58 +233,39 @@ export default function Step11({ user }) {
 
   return (
     <div className="page">
-      <h1 style={{ fontSize: 32, marginBottom: 10 }}>Share your moment.</h1>
-      <p style={{ color: 'var(--text-secondary)', marginBottom: 48, maxWidth: 480 }}>
-        You just joined something worth talking about. Here is everything you need to post.
-      </p>
 
-      {/* ── Section 1: Poster ── */}
-      <p className="section-label" style={{ marginBottom: 16 }}>YOUR POSTER</p>
-
-      {/* Scaled preview */}
-      <div
-        ref={previewContainerRef}
+      {/* ── 1. LinkedIn share — primary action at top ── */}
+      <a
+        href={LINKEDIN_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="btn-primary"
         style={{
+          display: 'block',
           width: '100%',
-          maxWidth: 400,
-          aspectRatio: '1 / 1',
-          overflow: 'hidden',
-          position: 'relative',
-          borderRadius: 12,
-          marginBottom: 20,
-          border: '1px solid rgba(255,255,255,0.08)',
+          maxWidth: 640,
+          textAlign: 'center',
+          textDecoration: 'none',
+          padding: '15px 24px',
+          marginBottom: 40,
+          boxSizing: 'border-box',
         }}
       >
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: 1080,
-          height: 1080,
-          backgroundColor: '#0A0818',
-          transform: `scale(${previewScale})`,
-          transformOrigin: 'top left',
-          padding: '72px 80px 64px',
-          boxSizing: 'border-box',
-          fontFamily: 'Inter, system-ui, sans-serif',
-          overflow: 'hidden',
-        }}>
-          <PosterContent name={name} />
-        </div>
-      </div>
+        🔗 Share on LinkedIn
+      </a>
 
-      <button
-        className="btn-secondary"
-        onClick={handleDownload}
-        style={{ marginBottom: 56 }}
-      >
-        📸 Download poster
-      </button>
+      {/* ── 2. Headline ── */}
+      <h1 style={{ fontSize: 32, marginBottom: 10 }}>Share your moment.</h1>
 
-      {/* ── Section 2: Caption ── */}
+      {/* ── 3. Subhead ── */}
+      <p style={{ color: 'var(--text-secondary)', marginBottom: 48, maxWidth: 480 }}>
+        You just joined something worth talking about. Here is everything you need.
+      </p>
+
+      {/* ── 4. Caption section ── */}
       <p className="section-label" style={{ marginBottom: 16 }}>YOUR CAPTION</p>
 
-      <div style={{ position: 'relative', width: '100%', maxWidth: 640, marginBottom: 48 }}>
+      <div style={{ position: 'relative', width: '100%', maxWidth: 640, marginBottom: 56 }}>
         <button
           onClick={handleCopy}
           style={{
@@ -315,23 +300,50 @@ export default function Step11({ user }) {
         </div>
       </div>
 
-      {/* ── Section 3: Share button ── */}
-      <a
-        href={LINKEDIN_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="btn-primary"
+      {/* ── 5. Poster section ── */}
+      <p className="section-label" style={{ marginBottom: 16 }}>YOUR POSTER</p>
+
+      <div
+        ref={previewContainerRef}
         style={{
-          display: 'inline-block',
-          textAlign: 'center',
-          textDecoration: 'none',
-          padding: '15px 32px',
-          marginBottom: 40,
+          width: '100%',
+          maxWidth: 400,
+          aspectRatio: '1 / 1',
+          overflow: 'hidden',
+          position: 'relative',
+          borderRadius: 12,
+          marginBottom: 20,
+          border: '1px solid rgba(255,255,255,0.08)',
         }}
       >
-        🔗 Post on LinkedIn
-      </a>
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: 1080,
+          height: 1080,
+          backgroundColor: '#0A0818',
+          transform: `scale(${previewScale})`,
+          transformOrigin: 'top left',
+          padding: '72px 80px 64px',
+          boxSizing: 'border-box',
+          fontFamily: 'Inter, system-ui, sans-serif',
+          overflow: 'hidden',
+        }}>
+          <PosterContent name={name} />
+        </div>
+      </div>
 
+      <button
+        className="btn-secondary"
+        onClick={handleDownload}
+        disabled={downloading}
+        style={{ marginBottom: 56, opacity: downloading ? 0.7 : 1 }}
+      >
+        {downloading ? 'Generating...' : '📸 Download poster'}
+      </button>
+
+      {/* ── 6. Bottom line ── */}
       <p style={{ fontSize: 12, color: 'var(--text-secondary)', textAlign: 'center', marginTop: 8, marginBottom: 0 }}>
         zybernow.com
       </p>

@@ -26,7 +26,7 @@ const divisions = [
       { name: 'Campus Task Force', body: 'You own college penetration. Activations, on ground presence, downloads, word of mouth. You are the reason Zyber spreads campus by campus.' },
       { name: 'Community Task Force', body: 'You build and scale the communities that live on Zyber. Seeding, engagement, keeping them alive and growing.' },
       { name: 'Events Task Force', body: 'Drives event-based user acquisition and activation. You identify high-conversion campus events, own the strategy to get users to RSVP and show up, use events as a primary channel for new downloads and sign-ups, coordinate with society partners on co-hosted events and follow up on attendees to convert them to active Zyber users.' },
-      { name: 'Partnerships', isHeader: true, body: 'You bring in the institutions, societies and external collaborators. You negotiate, you sign, you make the handshake happen.' },
+      { name: 'Partnerships', body: 'You bring in the institutions, societies and external collaborators. You negotiate, you sign, you make the handshake happen.' },
     ],
   },
   {
@@ -38,7 +38,7 @@ const divisions = [
     tfs: [
       { name: 'Gamification', body: 'You design the mechanics that make Zyber addictive in the right way. Streaks, scores, leaderboards, reward loops.' },
       { name: 'UI/UX', body: 'You own the experience. Flows, friction points, what feels right and what does not. You talk to users and turn that into decisions.' },
-      { name: 'Connect', body: 'You study the core mechanic. What makes a match feel right. What makes the 30 second window work. You feed that back to Tech.' },
+      { name: 'Connect', body: 'You work on everything that shapes how two people find and connect with each other. The swipe card experience, the information hierarchy on each card, what signals the algorithm weighs and how the matching engine ranks relevance. You study what makes a match feel right and what makes someone swipe past. Everything you learn feeds directly into what Tech builds next.' },
       { name: 'Communities', body: 'You research how communities behave on the platform. What makes them grow, what makes them go quiet.' },
       { name: 'Events', body: 'You design how events work on Zyber. The flow, the pre-event recommendations, the experience from RSVP to room.' },
       { name: 'Product Team', body: 'Ensures all updates are released promptly and communicated to users at the right moment. You coordinate timely shipping of every update across all task forces, craft and trigger push notifications for new features, design post-install onboarding flows and maintain the internal and user-facing changelog every update.' },
@@ -81,28 +81,31 @@ export default function Step7({ onNext }) {
             <div className="division-card-body">
               {div.tfs.map(tf =>
                 tf.isHeader ? (
-                  <div key={tf.name}>
-                    <div style={{
-                      fontSize: 10,
-                      fontWeight: 700,
-                      letterSpacing: '0.1em',
-                      textTransform: 'uppercase',
-                      color: div.borderColor,
-                      opacity: 0.75,
-                      marginTop: 14,
-                      marginBottom: 6,
-                    }}>
-                      {tf.name}
-                    </div>
-                    {tf.body && (
-                      <div className="tf-row">
-                        <span className="tf-desc">{tf.body}</span>
-                      </div>
-                    )}
+                  <div key={tf.name} style={{
+                    fontSize: 10,
+                    fontWeight: 700,
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    color: div.borderColor,
+                    opacity: 0.75,
+                    marginTop: 14,
+                    marginBottom: 6,
+                  }}>
+                    {tf.name}
                   </div>
                 ) : (
-                  <div className="tf-row" key={tf.name}>
-                    <span className="tf-name">{tf.name}</span>
+                  <div className="tf-row" key={tf.name} style={{ alignItems: 'flex-start' }}>
+                    <span className="tf-name" style={{
+                      width: 160,
+                      minWidth: 160,
+                      maxWidth: 180,
+                      flexShrink: 0,
+                      whiteSpace: 'normal',
+                      wordBreak: 'break-word',
+                      alignSelf: 'flex-start',
+                    }}>
+                      {tf.name}
+                    </span>
                     <span className="tf-desc">{tf.body}</span>
                   </div>
                 )
