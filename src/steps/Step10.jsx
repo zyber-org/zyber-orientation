@@ -43,7 +43,7 @@ export default function Step10({ user, onNext }) {
         </p>
       </div>
 
-      {/* ── Embedded Google Form ── */}
+      {/* ── Tally Form ── */}
       <div style={{ width: '100%', maxWidth: 640, marginBottom: 32 }}>
         <p style={{
           fontSize: 11,
@@ -55,16 +55,25 @@ export default function Step10({ user, onNext }) {
         }}>
           One last thing before you go.
         </p>
-        <iframe
-          src="https://tally.so/embed/2ED0b9?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-          width="100%"
-          height="500"
-          frameBorder="0"
-          marginHeight="0"
-          marginWidth="0"
-          title="Zyber Builder Orientation Form"
-          style={{ border: 'none', minHeight: '500px' }}
-        />
+        <div style={{
+          background: 'rgba(255,255,255,0.04)',
+          border: '1px solid rgba(255,255,255,0.08)',
+          borderRadius: '12px',
+          padding: '24px',
+          width: '100%',
+          boxSizing: 'border-box',
+        }}>
+          <iframe
+            src="https://tally.so/embed/2ED0b9?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+            width="100%"
+            height="500"
+            frameBorder="0"
+            marginHeight="0"
+            marginWidth="0"
+            title="Zyber Builder Orientation Form"
+            style={{ border: 'none', minHeight: '500px' }}
+          />
+        </div>
       </div>
 
       {/* ── CTA ── */}
