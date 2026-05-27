@@ -1,4 +1,15 @@
+import { useEffect } from 'react'
+
 export default function Step10({ user, onNext }) {
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.src = 'https://tally.so/widgets/embed.js'
+    script.async = true
+    document.body.appendChild(script)
+    return () => {
+      document.body.removeChild(script)
+    }
+  }, [])
   const name = user.name || 'Builder'
   const college = user.college || ''
   const course = user.course || ''
@@ -45,16 +56,15 @@ export default function Step10({ user, onNext }) {
           One last thing before you go.
         </p>
         <iframe
-          src="https://docs.google.com/forms/d/e/1FAIpQLSfFP1PhYf0goaIL-4o4ZNlfjRkl-StjrN0kTSsSwWoMvSu-KQ/viewform?embedded=true"
+          src="https://tally.so/embed/2ED0b9?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
           width="100%"
-          height="800"
+          height="500"
           frameBorder="0"
           marginHeight="0"
           marginWidth="0"
-          style={{ border: 'none', borderRadius: 12 }}
-        >
-          Loading form...
-        </iframe>
+          title="Zyber Builder Orientation Form"
+          style={{ border: 'none', minHeight: '500px' }}
+        />
       </div>
 
       {/* ── CTA ── */}
