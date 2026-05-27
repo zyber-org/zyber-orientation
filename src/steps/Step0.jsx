@@ -7,8 +7,8 @@ export default function Step0({ user, setUser, onNext }) {
     e.preventDefault()
     const errs = {}
     if (!user.name.trim()) errs.name = true
-    if (!user.email.trim()) errs.email = true
     if (!user.college.trim()) errs.college = true
+    if (!user.course.trim()) errs.course = true
     if (Object.keys(errs).length) {
       setErrors(errs)
       return
@@ -38,15 +38,6 @@ export default function Step0({ user, setUser, onNext }) {
         />
         <input
           className="input-field"
-          style={errors.email ? { borderColor: 'var(--red)' } : {}}
-          type="email"
-          placeholder="Email Address"
-          value={user.email}
-          onChange={update('email')}
-          autoComplete="email"
-        />
-        <input
-          className="input-field"
           style={errors.college ? { borderColor: 'var(--red)' } : {}}
           type="text"
           placeholder="Your College"
@@ -55,6 +46,7 @@ export default function Step0({ user, setUser, onNext }) {
         />
         <input
           className="input-field"
+          style={errors.course ? { borderColor: 'var(--red)' } : {}}
           type="text"
           placeholder="Your Course"
           value={user.course || ''}

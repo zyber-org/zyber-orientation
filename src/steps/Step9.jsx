@@ -8,7 +8,7 @@ const leftGroups = [
       { text: 'Download Zyber and create your profile' },
       {
         text: 'Get 3 friends on the app. They are your first feedback loop.',
-        subtext: 'You will be able to add their names on the next screen and we will help you get them onboarded after the session.',
+        subtext: 'You will share their details in the form at the end of this orientation.',
       },
     ],
   },

@@ -16,7 +16,7 @@ const TOTAL_STEPS = 10
 
 export default function App() {
   const [currentStep, setCurrentStep] = useState(0)
-  const [user, setUser] = useState({ name: '', email: '', college: '', course: '' })
+  const [user, setUser] = useState({ name: '', college: '', course: '' })
   const [checked, setChecked] = useState(Array(13).fill(false))
 
   const next = () => setCurrentStep(s => Math.min(s + 1, TOTAL_STEPS))
