@@ -3,19 +3,17 @@ import html2canvas from 'html2canvas'
 
 const LINKEDIN_URL = 'https://www.linkedin.com/sharing/share-offsite/?url=https://zybernow.com'
 
-const CAPTION = `Just joined Zyber as a Builder.
+const CAPTION = `I just joined Zyber as a Builder. It is a real-time networking app that connects you with people who share your interests, your background and your drive, right when you are both free. No doomscrolling. No waiting. Just the right person at the right time.
 
-Zyber is a real-time networking app that connects you with people who share your interests, your background and your drive — right when you are both free. No doomscrolling. No waiting for texts. Just the right person, at the right time.
+What makes this different is how it is built. Zyber runs on a student builder model. Students across some of the best campuses in India are not just using the product, they are building it. Research, GTM, communications, tech. Real work, real ownership, real impact.
 
-It is built by students, for the world. And right now we are building it together across some of the best campuses in India.
+I am part of that team now. And if you are a student who wants to work on something live, build real skills and be part of a founding cohort that will actually matter later, this is worth looking at.
 
-Excited to be part of this from the ground up.
-
-If you want to join us as a Builder, write to builders@zybernow.com
+To join as a Builder, write to builders@zybernow.com
 
 zybernow.com
 
-#ZyberBuilder #BuildingInPublic #GenZ #Networking`
+#Zyber #ZyberBuilder #BuildInPublic #StudentStartup #Startup #Entrepreneurship #DelhiUniversity #NLU #LawSchool #CLAT #CUET #Opportunity #Internship #EarlyStage #Funding #Unicorn #GenZ #Networking #CollegeCommunity #BuildingTogether`
 
 function PosterContent({ name }) {
   return (
