@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './index.css'
 import Step0 from './steps/Step0'
 import Step1 from './steps/Step1'
@@ -20,6 +20,10 @@ export default function App() {
   const [currentStep, setCurrentStep] = useState(0)
   const [user, setUser] = useState({ name: '', college: '', course: '' })
   const [checked, setChecked] = useState(Array(13).fill(false))
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [currentStep])
 
   const next = () => setCurrentStep(s => Math.min(s + 1, MAX_STEP))
   const back = () => setCurrentStep(s => Math.max(s - 1, 0))

@@ -44,19 +44,17 @@ export default function Step10({ user, onNext }) {
         }}>
           One last thing before you go.
         </p>
-        <div style={{ borderRadius: 12, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)' }}>
-          <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLSfFP1PhYf0goaIL-4o4ZNlfjRkl-StjrN0kTSsSwWoMvSu-KQ/viewform?embedded=true"
-            width="100%"
-            style={{
-              minHeight: 600,
-              border: 'none',
-              display: 'block',
-              background: 'transparent',
-            }}
-            title="Zyber Builder End Form"
-          />
-        </div>
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSfFP1PhYf0goaIL-4o4ZNlfjRkl-StjrN0kTSsSwWoMvSu-KQ/viewform?embedded=true"
+          width="100%"
+          height="800"
+          frameBorder="0"
+          marginHeight="0"
+          marginWidth="0"
+          style={{ border: 'none', borderRadius: 12 }}
+        >
+          Loading form...
+        </iframe>
       </div>
 
       {/* ── CTA ── */}
