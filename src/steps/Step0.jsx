@@ -8,7 +8,6 @@ export default function Step0({ user, setUser, onNext }) {
     const errs = {}
     if (!user.name.trim()) errs.name = true
     if (!user.college.trim()) errs.college = true
-    if (!user.course.trim()) errs.course = true
     if (Object.keys(errs).length) {
       setErrors(errs)
       return
@@ -43,14 +42,6 @@ export default function Step0({ user, setUser, onNext }) {
           placeholder="Your College"
           value={user.college}
           onChange={update('college')}
-        />
-        <input
-          className="input-field"
-          style={errors.course ? { borderColor: 'var(--red)' } : {}}
-          type="text"
-          placeholder="Your Course"
-          value={user.course || ''}
-          onChange={update('course')}
         />
         <div style={{ marginTop: 8 }}>
           <button type="submit" className="btn-primary">Let's go →</button>

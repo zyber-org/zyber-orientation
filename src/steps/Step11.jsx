@@ -17,7 +17,7 @@ zybernow.com
 
 #Zyber #ZyberBuilder #BuildInPublic #StudentStartup #Startup #Entrepreneurship #DelhiUniversity #NLU #LawSchool #CLAT #CUET #Opportunity #Internship #EarlyStage #Funding #Unicorn #GenZ #Networking #CollegeCommunity #BuildingTogether`
 
-function PosterContent({ name }) {
+function PosterContent({ name, college }) {
   return (
     <>
       {/* Background gradient layers */}
@@ -87,6 +87,17 @@ function PosterContent({ name }) {
         }}>
           I am {name}
         </div>
+        {college && (
+          <div style={{
+            fontSize: 20,
+            fontWeight: 500,
+            color: '#A78BFA',
+            lineHeight: 1.2,
+            marginBottom: 16,
+          }}>
+            {college}
+          </div>
+        )}
         <div style={{
           fontSize: 38,
           fontWeight: 400,
@@ -194,6 +205,7 @@ export default function Step11({ user }) {
   const [downloading, setDownloading] = useState(false)
 
   const name = user.name || 'Builder'
+  const college = user.college || ''
   const safeName = name.replace(/\s+/g, '-').toLowerCase()
 
   useEffect(() => {
@@ -339,7 +351,7 @@ export default function Step11({ user }) {
           fontFamily: 'Inter, system-ui, sans-serif',
           overflow: 'hidden',
         }}>
-          <PosterContent name={name} />
+          <PosterContent name={name} college={college} />
         </div>
       </div>
 
@@ -373,7 +385,7 @@ export default function Step11({ user }) {
           fontFamily: 'Inter, system-ui, sans-serif',
         }}
       >
-        <PosterContent name={name} />
+        <PosterContent name={name} college={college} />
       </div>
     </div>
   )

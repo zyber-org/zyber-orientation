@@ -18,7 +18,7 @@ const MAX_STEP = 11
 
 export default function App() {
   const [currentStep, setCurrentStep] = useState(0)
-  const [user, setUser] = useState({ name: '', college: '', course: '' })
+  const [user, setUser] = useState({ name: '', college: '' })
   const [checked, setChecked] = useState(Array(13).fill(false))
 
   useEffect(() => {

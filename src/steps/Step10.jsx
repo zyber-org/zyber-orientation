@@ -12,8 +12,6 @@ export default function Step10({ user, onNext }) {
   }, [])
   const name = user.name || 'Builder'
   const college = user.college || ''
-  const course = user.course || ''
-  const collegeAndCourse = [college, course].filter(Boolean).join(' · ')
 
   return (
     <div className="completion-wrap">
@@ -22,8 +20,8 @@ export default function Step10({ user, onNext }) {
         <div className="completion-wordmark">ZYBER</div>
         <div className="completion-badge">✦ ZYBER BUILDER ✦</div>
         <div className="completion-name">{name}</div>
-        {collegeAndCourse && (
-          <div className="completion-college">{collegeAndCourse}</div>
+        {college && (
+          <div className="completion-college">{college}</div>
         )}
         <div className="completion-footer-text">
           Orientation complete · May 2026
